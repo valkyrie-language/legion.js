@@ -1,0 +1,31 @@
+{
+    "name": "@valkyrie-language/legion",
+    "version": "0.0.1",
+    "description": "Valkyrie language package manager",
+    "homepage": "https://github.com/valkyrie-language/legion",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/valkyrie-language/legion4npm.git",
+        "directory": "packages/legion-auto"
+    },
+    "bugs": {
+        "url": "https://github.com/valkyrie-language/legion/issues"
+    },
+    "license": "UNLICENSED",
+    "type": "module",
+    "main": "index.js",
+    "bin": {
+        "legion": "legion.js"
+    },
+    "optionalDependencies": {
+        "@valkyrie-language/legion-darwin-arm64": "0.0.x",
+        "@valkyrie-language/legion-darwin-x64": "0.0.x",
+        "@valkyrie-language/legion-linux-x64": "0.0.x",
+        "@valkyrie-language/legion-linux-arm64": "0.0.x",
+        "@valkyrie-language/legion-win32-x64": "0.0.x"
+    },
+    "publishConfig": {
+        "access": "public",
+        "registry": "https://registry.npmjs.org/"
+    }
+}

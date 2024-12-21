@@ -1,0 +1,6 @@
+.idea/
+
+
+node_modules
+# no need to lock
+package-lock.json
