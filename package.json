@@ -17,7 +17,8 @@
         "eslint-define-config": "^2.1.0",
         "globals": "^15.12.0",
         "typescript": "^5.6.3",
-        "@eslint/js": "^9.14.0"
+        "@eslint/js": "^9.14.0",
+        "@types/node": "^22.10.2"
     },
     "dependencies": {
 

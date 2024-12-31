@@ -1,6 +1,7 @@
 import {program} from "commander";
+import {registerCreateCommand} from "./createCommand";
 
-export function matchInstall() {
+export function registerInstall() {
     program
     .command('install [NAME]')
     .alias('i')
