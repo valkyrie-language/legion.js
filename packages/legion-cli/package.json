@@ -5,7 +5,7 @@
     "license": "MIT",
     "type": "module",
     "bin": {
-        "legion": "dist/legion.js"
+        "legion": "dist/index.js"
     },
     "publishConfig": {
         "access": "public",

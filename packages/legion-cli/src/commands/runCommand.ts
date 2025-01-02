@@ -1,7 +1,7 @@
 import { program } from 'commander';
 import chalk from 'chalk';
-import { CommonOptions } from '../helpers/types';
-import { readConfig } from '../helpers/config';
+import { CommonOptions } from '../helpers/types.js';
+import { readConfig } from '../helpers/config.js';
 
 export function registerRunCommand() {
     program
@@ -30,3 +30,27 @@ async function runCommand(script: string, options: CommonOptions) {
     console.log(chalk.blue(`Running script: ${script}`));
     // TODO: Implement script running logic
 }
+
+// program
+// .description('Run WebAssembly code in Node.js')
+// .argument('<wasmFile>', 'Path to the WebAssembly file')
+// .action(async (wasmFile) => {
+//     try {
+//         // 读取 WASM 文件
+//         const wasmBuffer = fs.readFileSync(path.resolve(wasmFile));
+//
+//         // 实例化 WASM 模块
+//         const { instance } = await WebAssembly.instantiate(wasmBuffer);
+//
+//         // 从 WASM 模块中获取导出的函数
+//         const { add, subtract } = instance.exports;
+//
+//         // 调用 WASM 函数
+//         console.log(chalk.green(`1 + 2 = ${add(1, 2)}`));
+//         console.log(chalk.green(`5 - 3 = ${subtract(5, 3)}`));
+//     } catch (err) {
+//         console.error(chalk.red('Error loading WASM:', err));
+//     }
+// });
+//
+// program.parse(process.argv);

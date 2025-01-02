@@ -1,8 +1,8 @@
 import { program } from 'commander';
 import chalk from 'chalk';
 import inquirer from 'inquirer';
-import { CommonOptions } from '../helpers/types';
-import { readConfig } from '../helpers/config';
+import { CommonOptions } from '../helpers/types.js';
+import { readConfig } from '../helpers/config.js';
 
 export function registerUpgradeCommand() {
     program
@@ -19,8 +19,8 @@ async function upgradeCommand(options: CommonOptions) {
     
     // Mock dependencies for demonstration
     const dependencies = {
-        'dep1': { current: '1.0.0', latest: '2.0.0' },
-        'dep2': { current: '0.5.0', latest: '1.0.0' }
+        dep1: { current: '1.0.0', latest: '2.0.0' },
+        dep2: { current: '0.5.0', latest: '1.0.0' }
     };
 
     const choices = await inquirer.prompt([{

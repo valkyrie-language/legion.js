@@ -1,28 +1,28 @@
 #!/usr/bin/env node
 
-import { program } from 'commander';
+import {program} from 'commander';
 import chalk from 'chalk';
-import { registerAddCommand } from './commands/doAdd';
-import { registerBuildCommand } from './commands/buildCommand';
-import { registerRunCommand } from './commands/runCommand';
-import { registerCreateCommand } from './commands/createCommand';
-import { registerPublishCommand } from './commands/publishCommand';
-import { registerUpdateCommand } from './commands/updateCommand';
-import { registerUpgradeCommand } from './commands/upgradeCommand';
-import { registerCleanCommand } from './commands/cleanCommand';
-import { registerLoginCommand } from './commands/loginCommand';
-import { registerTestCommand } from './commands/testCommand';
-import { registerInitCommand } from './commands/initCommand';
-import { registerLinkCommand } from './commands/linkCommand';
-import { registerUnlinkCommand } from './commands/unlinkCommand';
-import { registerAuditCommand } from './commands/auditCommand';
-import { registerDoctorCommand } from './commands/doctorCommand';
-import { registerInfoCommand } from './commands/infoCommand';
-import { registerOutdatedCommand } from './commands/outdatedCommand';
-import { registerCacheCommand } from './commands/cacheCommand';
-import { registerExecCommand } from './commands/execCommand';
-import { registerInstall } from './commands/installCommand.js';
-import {registerPolyfill} from "./commands/doPolyfill";
+import {registerAddCommand} from './commands/doAdd.js';
+import {registerBuildCommand} from './commands/buildCommand.js';
+import {registerRunCommand} from './commands/runCommand.js';
+import {registerCreateCommand} from './commands/createCommand.js';
+import {registerPublishCommand} from './commands/publishCommand.js';
+import {registerUpdateCommand} from './commands/updateCommand.js';
+import {registerUpgradeCommand} from './commands/upgradeCommand.js';
+import {registerCleanCommand} from './commands/cleanCommand.js';
+import {registerLoginCommand} from './commands/loginCommand.js';
+import {registerTestCommand} from './commands/testCommand.js';
+import {registerInitCommand} from './commands/initCommand.js';
+import {registerLinkCommand} from './commands/linkCommand.js';
+import {registerUnlinkCommand} from './commands/unlinkCommand.js';
+import {registerAuditCommand} from './commands/auditCommand.js';
+import {registerDoctorCommand} from './commands/doctorCommand.js';
+import {registerInfoCommand} from './commands/infoCommand.js';
+import {registerOutdatedCommand} from './commands/outdatedCommand.js';
+import {registerCacheCommand} from './commands/cacheCommand.js';
+import {registerExecCommand} from './commands/execCommand.js';
+import {registerInstall} from './commands/installCommand.js';
+import {registerPolyfill} from './commands/doPolyfill.js';
 
 console.log(chalk.blue('🦁 Legion CLI'));
 

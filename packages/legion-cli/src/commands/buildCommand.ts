@@ -1,7 +1,7 @@
 import { program } from 'commander';
 import chalk from 'chalk';
-import { BuildOptions } from '../helpers/types';
-import { readConfig } from '../helpers/config';
+import { BuildOptions } from '../helpers/types.js';
+import { readConfig } from '../helpers/config.js';
 
 export function registerBuildCommand() {
     program

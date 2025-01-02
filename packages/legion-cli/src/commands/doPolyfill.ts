@@ -1,26 +1,26 @@
-import {Command, program} from "commander";
-import fs from "node:fs/promises";
-import {wasiPolyfill, watEncode} from "@valkyrie-language/legion-wasm32-wasi";
-import path from "path";
-import {PolyfillOptions} from "../helpers/types";
+import {Command, program} from 'commander';
+import fs from 'node:fs/promises';
+import {wasiPolyfill, watEncode} from '@valkyrie-language/legion-wasm32-wasi';
+import path from 'path';
+import {PolyfillOptions} from '../helpers/types.js';
 
 export function registerPolyfill() {
     program
-    .command('polyfill <INPUT> [OUTPUT]')
-    .alias("shim")
-    .description('Convert wasi component to js modules')
-    .option('--dry-run', 'Simulate the encoding without actually encoding')
-    .option('--generate-dwarf', 'Generate DWARF debug information')
-    .action(doPolyfill);
+        .command('polyfill <INPUT> [OUTPUT]')
+        .alias('shim')
+        .description('Convert wasi component to js modules')
+        .option('--dry-run', 'Simulate the encoding without actually encoding')
+        .option('--generate-dwarf', 'Generate DWARF debug information')
+        .action(doPolyfill);
 }
 
 export async function doPolyfill(input: string, output: string | undefined, options: PolyfillOptions) {
     try {
         let inputText = await fs.readFile(input);
         let files = wasiPolyfill(inputText, {
-            name: "index",
+            name: 'index',
             shim: [],
-        })
+        });
         if (output === undefined) {
             let inputPath = path.parse(input);
             output = `${inputPath.dir}/${inputPath.name}/`;

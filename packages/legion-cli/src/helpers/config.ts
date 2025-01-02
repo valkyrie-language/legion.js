@@ -1,7 +1,7 @@
 import * as fs from 'node:fs/promises';
 import * as path from 'path';
 import chalk from 'chalk';
-import { LegionConfig } from './types';
+import { LegionConfig } from './types.js';
 
 export async function readConfig(configPath?: string): Promise<LegionConfig> {
     const defaultPath = path.join(process.cwd(), 'legion.json');

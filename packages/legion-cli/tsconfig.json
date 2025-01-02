@@ -4,15 +4,17 @@
         "strict": true,
         "target": "ESNext",
         "module": "ESNext",
+        "esModuleInterop": true,
+        "allowSyntheticDefaultImports": true,
         "moduleResolution": "node",
         "allowJs": false,
         "declaration": true,
         "sourceMap": true,
-        // "lib": ["esnext", "dom"],
+        "lib": ["esnext", "dom"],
         "rootDir": "src",
         "outDir": "dist"
     },
     "include": [
-         "src/**/*.ts"
+        "src/**/*.ts"
     ]
 }

@@ -1,6 +1,6 @@
 import { program } from 'commander';
 import chalk from 'chalk';
-import { CommonOptions } from '../helpers/types';
+import { CommonOptions } from '../helpers/types.js';
 
 export function registerLoginCommand() {
     program
