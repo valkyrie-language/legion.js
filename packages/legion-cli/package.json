@@ -14,6 +14,8 @@
     "scripts": {
         "build": "tsc",
         "lint": "eslint 'src/**/*.{js,ts,tsx}'",
+        "r": "tsc && node dist/index.js run",
+        "r:hello": "npm run r tests/encode/encode_module.wat",
         "prepublishOnly": "npm run build"
     },
     "dependencies": {

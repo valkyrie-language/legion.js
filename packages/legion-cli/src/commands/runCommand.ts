@@ -1,7 +1,9 @@
-import { program } from 'commander';
+import {program} from 'commander';
 import chalk from 'chalk';
-import { CommonOptions } from '../helpers/types.js';
-import { readConfig } from '../helpers/config.js';
+import {CommonOptions} from '../helpers/types.js';
+import {readConfig} from '../helpers/config.js';
+import {watEncode} from '@valkyrie-language/legion-wasm32-wasi';
+import fs from 'node:fs/promises';
 
 export function registerRunCommand() {
     program
@@ -14,23 +16,36 @@ export function registerRunCommand() {
         .action(runCommand);
 }
 
-async function runCommand(script: string, options: CommonOptions) {
+export interface RunOptions extends CommonOptions {
+    access?: 'public' | 'private';
+}
+
+async function runCommand(script: string, options: RunOptions) {
     const config = await readConfig();
-    
+
     if (!script) {
         console.log(chalk.red('Please specify a script to run'));
         return;
     }
 
-    if (!config.scripts?.[script]) {
-        console.log(chalk.red(`Script "${script}" not found in legion.json`));
-        return;
+    if (script.endsWith('wat')) {
+        const wat = await fs.readFile(script, 'utf-8');
+        const wasm = watEncode(wat, {
+            generateDwarf: true
+        });
+        const { instance } = await WebAssembly.instantiate(wasm, {});
+        console.log(instance);
     }
+
+    // if (!config.scripts?.[script]) {
+    //     console.log(chalk.red(`Script "${script}" not found in legion.json`));
+    //     return;
+    // }
 
     console.log(chalk.blue(`Running script: ${script}`));
     // TODO: Implement script running logic
 }
-
+//
 // program
 // .description('Run WebAssembly code in Node.js')
 // .argument('<wasmFile>', 'Path to the WebAssembly file')

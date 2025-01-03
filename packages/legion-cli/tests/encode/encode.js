@@ -8,3 +8,10 @@ test("wasm component to wat", async () => {
     })
     return true
 });
+
+test("wasm module to wat", async () => {
+    await encodeCommand('tests/encode/encode_component.wat', undefined, {
+        generateDwarf: false
+    })
+    return true
+});
