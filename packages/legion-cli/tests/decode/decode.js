@@ -1,5 +1,5 @@
 import test from "node:test";
-import {decodeCommand} from "../../dist/matchDecode.js";
+import {decodeCommand} from "../../dist/commands/decodeCommand.js";
 
 
 test("wat component to wasm", async () => {

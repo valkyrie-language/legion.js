@@ -2,7 +2,7 @@ import {program} from 'commander';
 import chalk from 'chalk';
 import {CommonOptions} from '../helpers/types.js';
 import {readConfig} from '../helpers/config.js';
-import {watEncode} from '@valkyrie-language/legion-wasm32-wasi';
+import {wastEncode} from '@valkyrie-language/legion-wasm32-wasi';
 import fs from 'node:fs/promises';
 
 export function registerRunCommand() {
@@ -28,23 +28,33 @@ async function runCommand(script: string, options: RunOptions) {
         return;
     }
 
-    if (script.endsWith('wat')) {
+    if (script.endsWith('.wat')) {
+        console.log(chalk.blue(`Running script: ${script}`));
         const wat = await fs.readFile(script, 'utf-8');
-        const wasm = watEncode(wat, {
+        const wasm = wastEncode(wat, {
             generateDwarf: true
         });
-        const { instance } = await WebAssembly.instantiate(wasm, {});
-        console.log(instance);
+        await runWasm(wasm);
+    } else if (script.endsWith('.wasm')) {
+        console.log(chalk.blue(`Running script: ${script}`));
+        const wasm = await fs.readFile(script);
+        await runWasm(wasm);
+    }
+}
+
+async function runWasm(wasm: Uint8Array) {
+    function printNumber(value: number) {
+        console.log(value);
     }
 
-    // if (!config.scripts?.[script]) {
-    //     console.log(chalk.red(`Script "${script}" not found in legion.json`));
-    //     return;
-    // }
-
-    console.log(chalk.blue(`Running script: ${script}`));
-    // TODO: Implement script running logic
+    await WebAssembly.instantiate(wasm, {
+        spectest: {
+            print_i32: printNumber,
+            print_i64: printNumber,
+        },
+    });
 }
+
 //
 // program
 // .description('Run WebAssembly code in Node.js')

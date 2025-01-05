@@ -22,7 +22,8 @@ import {registerOutdatedCommand} from './commands/outdatedCommand.js';
 import {registerCacheCommand} from './commands/cacheCommand.js';
 import {registerExecCommand} from './commands/execCommand.js';
 import {registerInstall} from './commands/installCommand.js';
-import {registerPolyfill} from './commands/doPolyfill.js';
+import {registerPolyfill} from './commands';
+import {registerDecodeCommand} from './commands';
 
 console.log(chalk.blue('🦁 Legion CLI'));
 
@@ -36,6 +37,7 @@ program
 registerAddCommand();
 registerBuildCommand();
 registerRunCommand();
+registerDecodeCommand();
 registerCreateCommand();
 registerPublishCommand();
 registerUpdateCommand();

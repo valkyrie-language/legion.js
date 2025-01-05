@@ -7,10 +7,7 @@ export interface LegionConfig {
     mode?: 'development' | 'production';
 }
 
-export interface PolyfillOptions {
-    dryRun: boolean;
-    generateDwarf: boolean,
-}
+
 
 export interface CommonOptions {
     dryRun?: boolean;

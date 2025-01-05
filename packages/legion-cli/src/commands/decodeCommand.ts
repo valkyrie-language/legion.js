@@ -1,17 +1,17 @@
-import {program} from "commander";
-import * as fs from "node:fs/promises";
+import {program} from 'commander';
+import * as fs from 'node:fs/promises';
 import * as path from 'path';
-import {wasmDecode} from "@valkyrie-language/legion-wasm32-wasi";
+import {wasmDecode} from '@valkyrie-language/legion-wasm32-wasi';
 
-export function matchDecode() {
+export function registerDecodeCommand() {
     program
-    .command('decode <INPUT> [OUTPUT]')
-    .description('Decode an input file and save it to the output directory')
-    .option('--dry-run', 'Simulate the decoding without actually decoding')
-    .option('--skeleton-only', 'Only decode the skeleton of the file')
-    .option('--name-unnamed', 'Name unnamed functions')
-    .option('--fold-instructions', 'Fold instructions')
-    .action(decodeCommand);
+        .command('decode <INPUT> [OUTPUT]')
+        .description('Decode an input file and save it to the output directory')
+        .option('--dry-run', 'Simulate the decoding without actually decoding')
+        .option('--skeleton-only', 'Only decode the skeleton of the file')
+        .option('--name-unnamed', 'Name unnamed functions')
+        .option('--fold-instructions', 'Fold instructions')
+        .action(decodeCommand);
 }
 
 interface DecodeOptions {
@@ -25,10 +25,10 @@ export async function decodeCommand(input: string, output: string | undefined, o
     try {
         let inputBytes = await fs.readFile(input);
         let bytes = wasmDecode(inputBytes, {
+            indentText: '    ',
             skeletonOnly: options.skeletonOnly || false,
-            nameUnnamed: options.nameUnnamed || false,
             foldInstructions: options.foldInstructions || false
-        })
+        });
         if (output === undefined) {
             let inputPath = path.parse(input);
             output = `${inputPath.dir}/${inputPath.name}.wat`;
