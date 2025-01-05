@@ -21,8 +21,8 @@ export interface PolyfillOptions {
 }
 export async function polyfillCommand(input: string, output: string | undefined, options: PolyfillOptions) {
     try {
-        let inputText = await fs.readFile(input);
-        let files = wasiPolyfill(inputText, {
+        let inputBytes = await fs.readFile(input);
+        let files = wasiPolyfill(inputBytes, {
             guest: options.guest,
             debug: false,
             instantiation: options.instantiation,
