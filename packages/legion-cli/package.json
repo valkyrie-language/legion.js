@@ -14,9 +14,9 @@
     "scripts": {
         "build": "tsc",
         "lint": "eslint 'src/**/*.{js,ts,tsx}'",
-        "r": "tsc && node --experimental-wasm-stack-switching dist/index.js run",
-        "r:generator": "tsc && node --experimental-wasm-stack-switching dist/index.js run tests/run/generator.wat",
-        "r:print": "tsc && node --experimental-wasm-stack-switching dist/index.js run tests/run/print.wat",
+        "r": "node --experimental-wasm-stack-switching src/index.js run",
+        "r:generator": "node --experimental-wasm-stack-switching src/index.js run ../../tests/run/generator.wat",
+        "r:print": "node --experimental-wasm-stack-switching src/index.js run ../../tests/run/print.wat",
         "prepublishOnly": "npm run build"
     },
     "dependencies": {
