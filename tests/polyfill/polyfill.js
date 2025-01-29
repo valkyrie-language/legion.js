@@ -1,5 +1,5 @@
 import test from "node:test";
-import {polyfillCommand} from "../../dist/commands/index.js";
+import {polyfillCommand} from "../../dist/commands/legion.js";
 
 test("wasm component to js", async () => {
     try {

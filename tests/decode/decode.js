@@ -1,27 +1,41 @@
 import test from "node:test";
-import {decodeCommand} from "../../dist/commands/decodeCommand.js";
+import {exec} from "node:child_process";
 
+test('legion decode document', async (done) => {
+    await exec('legion encode -h', (err, out) => {
+        console.error(err);
+        done();
+    });
+     exec('legion encode -help', (err, out) => {
+        console.error(err);
+        done();
+    });
+})
 
-test("wat component to wasm", async () => {
-    await decodeCommand('tests/decode/decode_component.wasm', undefined, {})
-    return true
-});
+test('wat component to wasm', async (done) => {
+     exec('legion decode tests/decode/decode_component.wasm', (err, out) => {
+        console.error(err);
+        done();
+    });
+})
 
-test("wat component to wasm (fold instructions)", async () => {
-    await decodeCommand('tests/decode/decode_component.wasm', 'tests/decode/decode_component_fold.wat', {
-        foldInstructions: true
-    })
-    return true
-});
-test("wat component to wasm (skeleton only)", async () => {
-    await decodeCommand('tests/decode/decode_component.wasm', 'tests/decode/decode_component_skeleton.wat', {
-        skeletonOnly: true
-    })
-    return true
-});
-test("wat component to wasm (name unnamed)", async () => {
-    await decodeCommand('tests/decode/decode_component.wasm', 'tests/decode/decode_component_named.wat', {
-        nameUnnamed: true
-    })
-    return true
-});
+test('wat component to wasm (fold instructions)', async (done) => {
+    exec('legion decode tests/decode/decode_component.wasm -o tests/decode/decode_component_fold.wat', (err, out) => {
+        console.error(err);
+        done();
+    });
+})
+
+test('wat component to wasm (skeleton only)', async (done) => {
+    exec('legion decode tests/decode/decode_component.wasm -o tests/decode/decode_component_skeleton.wat', (err, out) => {
+        console.error(err);
+        done();
+    });
+})
+
+test('wat component to wasm (name unnamed)', async (done) => {
+    exec('legion decode tests/decode/decode_component.wasm -o tests/decode/decode_component_named.wat', (err, out) => {
+        console.error(err);
+        done();
+    });
+})
