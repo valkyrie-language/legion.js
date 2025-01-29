@@ -1,11 +1,11 @@
 {
     "name": "@valkyrie-language/legion",
-    "version": "0.0.4",
+    "version": "0.1.0",
     "description": "Legion package manager CLI",
     "license": "MIT",
     "type": "module",
     "bin": {
-        "legion": "dist/index.js"
+        "legion": "src/index.js"
     },
     "publishConfig": {
         "access": "public",
@@ -20,14 +20,8 @@
         "prepublishOnly": "npm run build"
     },
     "dependencies": {
-        "@valkyrie-language/legion-wasm32-wasi": "^0.0.4",
-        "@valkyrie-language/valkyrie-wasm32-wasi": "^0.0.0",
-        "binaryen": "^121.0.0",
-        "chalk": "^5.4.1",
-        "commander": "^13.1.0",
-        "inquirer": "^12.3.2"
+        "@valkyrie-language/legion-wasm32-wasi": "^0.1.0"
     },
     "devDependencies": {
-        "@types/inquirer": "^9.0.7"
     }
 }
